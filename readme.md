@@ -29,6 +29,8 @@
 | e12 | (S6, S7) | w12 = 9 + ((3 + D1) mod 5) | 12 |
 | e13 | (S1, S4) | w13 = 20 + (0 mod 4) | 20 |
 
+### Grafo com pesos
+![Grafo com Pesos](grafo.png)
 
 ### Matrix de peso 8x8:
 | | S0 | S1 | S2 | S3 | S4 | S5 | S6 | S7 |
@@ -42,7 +44,7 @@
 | S6 | ∞ | ∞ | ∞ | 16 | ∞ | ∞ | 0 | 12 |
 | S7 | ∞ | ∞ | ∞ | ∞ | 17 | 24 | 12 | 0 |
 
-### Simétria esparsidade:
+### Simétria e Esparsidade:
 
 | | S0 | S1 | S2 | S3 | S4 | S5 | S6 | S7 |
 |----|----|----|----|----|----|----|----|----|
@@ -55,3 +57,22 @@
 | S6 | ∞ | ∞ | ∞ | Conectado | ∞ | ∞ | - | Conectado |
 | S7 | ∞ | ∞ | ∞ | ∞ | Conectado | Conectado | Conectado | - |
 
+&emsp; Com base na tabela acima que mostra os vertices que estão conectados ou não, podemos ver que sim ele apresenta simétria e esparsidade, pelo fato de haver menos da metade de conexões máximas possíveis. 
+
+## 2° Etapa - Teste de mesa Tabular de Dijkstra
+
+Origem: S0 | Destino: S7 | Os valores entre colchetes indicam vértices já fechados.
+
+| Iteração | u | L[u] | L[S0] | L[S1] | L[S2] | L[S3] | L[S4] | L[S5] | L[S6] | L[S7] | Antecessores atualizados |
+|----------|---|------|-------|-------|-------|-------|-------|-------|-------|-------|--------------------------|
+| Inic. | — | — | 0 | ∞ | ∞ | ∞ | ∞ | ∞ | ∞ | ∞ | Inicialização na origem S0 |
+| 1 | S0 | 0 | [0] | 10 | 18 | ∞ | ∞ | ∞ | ∞ | ∞ | Ant[S1] = S0, Ant[S2] = S0 |
+| 2 | S1 | 10 | [0] | [10] | 18 | 22 | 30 | ∞ | ∞ | ∞ | Ant[S3] = S1, Ant[S4] = S1 (S2 mantido: 10 + 10 = 20 > 18) |
+| 3 | S2 | 18 | [0] | [10] | [18] | 22 | 30 | 32 | ∞ | ∞ | Ant[S5] = S2 (S4 mantido: 18 + 15 = 33 > 30) |
+| 4 | S3 | 22 | [0] | [10] | [18] | [22] | 30 | 32 | 38 | ∞ | Ant[S6] = S3 (S4 mantido: 22 + 10 = 32 > 30) |
+| 5 | S4 | 30 | [0] | [10] | [18] | [22] | [30] | 32 | 38 | 47 | Ant[S7] = S4 (S5 mantido: 30 + 8 = 38 > 32) |
+| 6 | S5 | 32 | [0] | [10] | [18] | [22] | [30] | [32] | 38 | 47 | Nenhum (S7 mantido: 32 + 24 = 56 > 47) |
+| 7 | S6 | 38 | [0] | [10] | [18] | [22] | [30] | [32] | [38] | 47 | Nenhum (S7 mantido: 38 + 12 = 50 > 47) |
+| 8 | S7 | 47 | [0] | [10] | [18] | [22] | [30] | [32] | [38] | [47] | Destino fechado, fim do algoritmo |
+
+**Caminho mínimo:** S0 → S1 → S4 → S7, com custo total 10 + 20 + 17 = **47**.
