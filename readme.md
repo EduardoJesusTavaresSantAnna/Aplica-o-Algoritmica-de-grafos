@@ -86,3 +86,22 @@ Origem: S0 | Destino: S7 | Os valores entre colchetes indicam vértices já fech
 
 &emsp; Para facilitar a montagem segui com o uso do netwokx, porém por mais que seja mais facil as interações não fiam expostas a respeito do algoritmo.
 
+
+## 4° Etapa - Questionario Analítico de Engenharia
+
+### Questão 1 - Rota e custo otímo:
+- Distância Mínima: 47 km (10+20+17)
+- Rota: S0 -> S1 -> S4 -> S7
+- Ordem de Fechamento: S0, S1, S2, S3, S4, S5, S6, S7
+
+### Questão 2 - Queda do Ramal e5 (S2, S4)
+- Nova Rota: continua S0 -> S1 -> S4 -> S7
+- Novo Custo: 47km
+- Acrésimo: 0km
+- Percentual: 0/100 = 100%
+
+&emsp; A rota não sofreu alteração pois o caminho usa de S1 para S4, seguir pela S2 para S5 custaria mais em condições normais e por não passar por lá  antes, não houve alteração no caminho nem nos custos.
+
+### Questão 3 - Prim (MST) x Dijkstra
+
+&emsp; O custo total da MST (Prim) é de 78 km, e a soma das distâncias de Dijkstra a partir de S0 é de 197 km. A soma é maior porque conta os trechos compartilhados mais de uma vez, então ela não representa a extensão física da rede. A união das rotas de Dijkstra usa 107 km de ramais e não gera a MST porque os objetivos são diferentes: Dijkstra busca o menor caminho de S0 até cada subestação, enquanto Prim busca conectar todas com a menor extensão total. Por isso, Dijkstra é melhor para definir rotas de emergência, com menor custo operacional, e Prim é melhor para reduzir o custo de infraestrutura, embora alguns trajetos fiquem mais longos, como S0 até S7, que passa de 47 km para 50 km.
