@@ -1,8 +1,6 @@
-# Smart Grid (8 subestações, 13 ramais) — resolução com NetworkX
 import sys
 import networkx as nx
 
-# ---------- Etapa 1: parametrização pelo RA ----------
 RA = sys.argv[1] if len(sys.argv) > 1 else "510230"
 D1, D2, D3, D4, D5, D6 = (int(c) for c in RA)
 ORIGEM = "S0"
@@ -18,8 +16,8 @@ vias = [                                    # (u, v, distância em km)
     ("S1", "S4", 20 + D6 % 4),
 ]
 
-G = nx.Graph()                              # não orientado: ida = volta
-G.add_nodes_from([f"S{i}" for i in range(8)])   # garante a ordem S0..S7
+G = nx.Graph()                              
+G.add_nodes_from([f"S{i}" for i in range(8)])   
 G.add_weighted_edges_from(vias)
 assert all(w > 0 for *_, w in G.edges(data="weight")), "Dijkstra exige pesos > 0"
 
