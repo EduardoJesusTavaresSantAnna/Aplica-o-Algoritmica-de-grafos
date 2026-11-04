@@ -21,12 +21,12 @@
 | e4 | (S1, S3) | w4 = 12 + (0 mod 6) | 12 |
 | e5 | (S2, S4) | w5 = 14 + (1 mod 5) | 15 |
 | e6 | (S2, S5) | w6 = 9 + (5 mod 6) | 14 |
-| e7 | (S3, S4) | w7 = 7 + ((3 + D6) mod 5) | 10 |
-| e8 | (S3, S6) | w8 = 11 + ((2 + D5) mod 6) | 16 |
-| e9 | (S4, S5) | w9 = 6 + ((0 + D4) mod 4) | 8 |
-| e10 | (S4, S7) | w10 = 16 + ((1 + D3) mod 7) | 17 |
-| e11 | (S5, S7) | w11 = 18 + ((5 + D2) mod 8) | 24 |
-| e12 | (S6, S7) | w12 = 9 + ((3 + D1) mod 5) | 12 |
+| e7 | (S3, S4) | w7 = 7 + ((3 + 0) mod 5) | 10 |
+| e8 | (S3, S6) | w8 = 11 + ((2 + 3) mod 6) | 16 |
+| e9 | (S4, S5) | w9 = 6 + ((0 + 2) mod 4) | 8 |
+| e10 | (S4, S7) | w10 = 16 + ((1 + 0) mod 7) | 17 |
+| e11 | (S5, S7) | w11 = 18 + ((5 + 1) mod 8) | 24 |
+| e12 | (S6, S7) | w12 = 9 + ((3 + 5) mod 5) | 12 |
 | e13 | (S1, S4) | w13 = 20 + (0 mod 4) | 20 |
 
 ### Grafo com pesos
@@ -76,3 +76,13 @@ Origem: S0 | Destino: S7 | Os valores entre colchetes indicam vértices já fech
 | 8 | S7 | 47 | [0] | [10] | [18] | [22] | [30] | [32] | [38] | [47] | Destino fechado, fim do algoritmo |
 
 **Caminho mínimo:** S0 → S1 → S4 → S7, com custo total 10 + 20 + 17 = **47**.
+
+
+## 3° Etapa - Implementação do Código e Validação
+
+&emsp; Para entender o que foi feito dentro dessa parte, siga para o arquivo `main.py` que estão junto desta documentação.
+
+&emsp; Como não havia muita prática e domínio por parte minha com relação ao código, tive dificuldade de aplicar o código diretamente sozinho, e para auxiliar a cumprir de acordo com o que era pedido usei de documentação das bibliotecas e dos exemplos padronizados para casos parecidos de outros tipos de problemas.
+
+&emsp; Para facilitar a montagem segui com o uso do netwokx, porém por mais que seja mais facil as interações não fiam expostas a respeito do algoritmo.
+
